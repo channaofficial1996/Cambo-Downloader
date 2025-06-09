@@ -32,13 +32,13 @@ async def download_media(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text("⚠️ Only YouTube, TikTok, Facebook, or Instagram links are supported.")
 
-async def main():
-    TOKEN ="7554977187:AAFDghX_WsB1cGU43cYOTRzHGDO1PWj8Zrg"
+def main():
+    TOKEN = os.getenv("7554977187:AAFDghX_WsB1cGU43cYOTRzHGDO1PWj8Zrg") or "7554977187:AAFDghX_WsB1cGU43cYOTRzHGDO1PWj8Zrg"
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), download_media))
     print("🤖 Bot Started! Paste any supported link in Telegram.")
-    await app.run_polling()
+    # **Run in current event loop, not new**
+    app.run_polling()
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
+    main()
