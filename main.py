@@ -36,7 +36,7 @@ def download_media(update, context):
 
 def main():
     import os
-    TOKEN = os.getenv("BOT_TOKEN") or "PASTE_YOUR_BOT_TOKEN_HERE"
+    TOKEN ="7554977187:AAFDghX_WsB1cGU43cYOTRzHGDO1PWj8Zrg"
     updater = Updater(TOKEN, use_context=True)
     updater.dispatcher.add_handler(
         MessageHandler(Filters.text & ~Filters.command, download_media)
